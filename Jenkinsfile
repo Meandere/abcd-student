@@ -16,6 +16,7 @@ pipeline {
             steps {
                 echo 'Hello!'
                 sh 'ls -la'
+                pwd
                 docker stop juice-shop
             }
         }
