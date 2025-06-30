@@ -33,7 +33,6 @@ pipeline {
                 "zap.sh -cmd -addonupdate; zap.sh -cmd -addoninstall communityScripts -addoninstall pscanrulesAlpha -addoninstall pscanrulesBeta -autorun /zap/wrk/passive_scan.yaml" \
                 || true
                 '''
-                docker stop juice-shop
              }
           }
      }
