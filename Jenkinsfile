@@ -15,7 +15,7 @@ pipeline {
         stage('Example') {
             steps {
                 echo 'Hello!'
-                sh 'docker stop zap2 juice-shop2'
+                sh 'docker rm zap2 juice-shop2'
             }
         }
         stage('[ZAP] Baseline passive-scan') {
