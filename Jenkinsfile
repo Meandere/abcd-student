@@ -24,11 +24,11 @@ pipeline {
             steps {
                 sh 'mkdir -p results/'
                 sh '''
-                docker run --name juice-shop2 -d --rm -p 3000:3000 bkimminich/juice-shop
+                docker run --name juice-shop -d --rm -p 3000:3000 bkimminich/juice-shop
                 sleep 5
                 '''
                 sh '''
-                docker run --name zap2 \
+                docker run --name zap \
                 --add-host=host.docker.internal:host-gateway \
                 -v ${WORKSPACE}/nowyzap/:/zap/wrk/:rw \
                 -t ghcr.io/zaproxy/zaproxy:stable bash -c \
@@ -41,8 +41,8 @@ pipeline {
     post {
         always {
             sh '''
-                docker stop zap2 juice-shop2
-                docker rm zap2
+                docker stop zap juice-shop
+                docker rm zap
             '''
         }
     }
