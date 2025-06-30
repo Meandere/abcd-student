@@ -15,6 +15,7 @@ pipeline {
         stage('Example') {
             steps {
                 echo 'Hello!'
+                sh 'ls /var/jenkins_home/workspace/Test1/.zap/'
             }
         }
         stage('[ZAP] Baseline passive-scan') {
