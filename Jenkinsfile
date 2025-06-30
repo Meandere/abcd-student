@@ -15,7 +15,6 @@ pipeline {
         stage('Example') {
             steps {
                 echo 'Hello!'
-                sh 'docker stop juice-shop2'
                 sh 'docker rm zap2 juice-shop2'
             }
         }
