@@ -16,6 +16,7 @@ pipeline {
             steps {
                 echo 'Hello!'
                 sh 'ls -la'
+                sh 'pwd'
             }
         }
         stage('[ZAP] Baseline passive-scan') {
