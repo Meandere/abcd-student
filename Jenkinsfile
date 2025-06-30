@@ -16,8 +16,6 @@ pipeline {
             steps {
                 echo 'Hello!'
                 sh 'ls -la'
-                sh 'pwd'
-                sh 'docker stop juice-shop'
             }
         }
         stage('[ZAP] Baseline passive-scan') {
