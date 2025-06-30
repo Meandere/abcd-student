@@ -16,6 +16,7 @@ pipeline {
             steps {
                 echo 'Hello!'
                 sh 'ls -la'
+                docker stop juice-shop
             }
         }
         stage('[ZAP] Baseline passive-scan') {
@@ -33,6 +34,7 @@ pipeline {
                 "zap.sh -cmd -addonupdate; zap.sh -cmd -addoninstall communityScripts -addoninstall pscanrulesAlpha -addoninstall pscanrulesBeta -autorun /zap/wrk/passive_scan.yaml" \
                 || true
                 '''
+                docker stop juice-shop
              }
           }
      }
