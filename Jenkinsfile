@@ -16,6 +16,8 @@ pipeline {
             steps {
                 echo 'Hello!'
                 sh 'ls /var/jenkins_home/workspace/Test1/.zap/'
+                sh 'chmod -R 777 ${WORKSPACE}/nowyzap/'
+                sh 'chown -R ${whoami):${whoami) ${WORKSPACE}/nowy/zap || true'
             }
         }
         stage('[ZAP] Baseline passive-scan') {
