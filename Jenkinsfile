@@ -15,9 +15,6 @@ pipeline {
         stage('Example') {
             steps {
                 echo 'Hello!'
-                sh 'ls /var/jenkins_home/workspace/Test1/.zap/'
-                sh 'chmod -R 777 ${WORKSPACE}/nowyzap/'
-                sh 'chown -R ${whoami}:${whoami} ${WORKSPACE}/nowyzap/ || true'
             }
         }
         stage('[ZAP] Baseline passive-scan') {
@@ -30,7 +27,7 @@ pipeline {
                 sh '''
                 docker run --name zap \
                 --add-host=host.docker.internal:host-gateway \
-                -v nowyzap/:/zap/wrk/:rw \
+                -v ${WORKSPACE}/.zap/:/zap/wrk/:rw \
                 -t ghcr.io/zaproxy/zaproxy:stable bash -c \
                 "zap.sh -cmd -addonupdate; zap.sh -cmd -addoninstall communityScripts -addoninstall pscanrulesAlpha -addoninstall pscanrulesBeta -autorun /zap/wrk/zap.yaml" \
                 || true
